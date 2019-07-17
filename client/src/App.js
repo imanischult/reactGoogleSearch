@@ -7,6 +7,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import NoMatch from "./pages/NoMatch";
 import Navbar from "./Components/Navbar/Navbar";
 import TitleCard from "./Components/TitleCard/TitleCard";
+import Searchbar from "./Components/Searchbar/Searchbar";
+import Searchresultcard from "./Components/Searchresultcard/Searchresultcard";
+import Savedresultcard from "./Components/Savedresultcard/Savedresultcard";
 
 const Book = () => <div>I'm one book</div>;
 const Books = () => <div>I am multiple books</div>;
@@ -18,6 +21,9 @@ function App() {
     <div>
       <Navbar />
       <TitleCard />
+      <Searchbar />
+      <Searchresultcard />
+      <Savedresultcard />
       <Router>
         <div>
           <Switch>
