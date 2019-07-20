@@ -12,9 +12,28 @@ import Searchresultcard from "./components/Searchresultcard/Searchresultcard";
 import Savedresultcard from "./components/Savedresultcard/Savedresultcard";
 
 const Book = () => <div>I'm one book</div>;
-const Books = () => <div>I am multiple books</div>;
 const Detail = () => <div>Details</div>;
 const NoMatch = () => <div>No match! go back!</div>;
+
+class Books extends React.Component {
+  state = {
+    books: []
+  };
+
+  render() {
+    return <div>I am multiple books</div>;
+  }
+}
+
+class SavedBooks extends React.Component {
+  state = {
+    saved: []
+  };
+
+  render() {
+    return <div> I am some saved books</div>;
+  }
+}
 
 function App() {
   return (
@@ -27,9 +46,9 @@ function App() {
       <Router>
         <div>
           <Switch>
-            <Route exact path="/" component={Book} />
-            <Route exact path="/book" component={Book} />
-            <Route exact path="/books" component={Books} />
+            <Route exact path="/" component={Books} />
+            <Route exact path="/book" component={Books} />
+            <Route exact path="/savedbooks" component={SavedBooks} />
             <Route exact path="/books/:id" component={Detail} />
             <Route component={NoMatch} />
           </Switch>

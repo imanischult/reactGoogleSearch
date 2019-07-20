@@ -14,6 +14,7 @@
 
 const axios = require("axios");
 const router = require("express").Router();
+console.log(`${process.env.REACT_APP_GOOGLE_API_KEY}`);
 
 router.get("/recipes", (req, res) => {
   axios
@@ -24,5 +25,4 @@ router.get("/recipes", (req, res) => {
 
 module.exports = router;
 
-// api key = AIzaSyC0HPX0jRmvf9CebHxxi1Syghmn8Yqo9Dk
-// https://www.googleapis.com/books/v1/volumes?q=barackobama&key=AIzaSyC0HPX0jRmvf9CebHxxi1Syghmn8Yqo9Dk
+// https://www.googleapis.com/books/v1/volumes/q=
