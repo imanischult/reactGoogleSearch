@@ -1,5 +1,5 @@
 import React from "react";
-import Axios from "axios";
+import axios from "axios";
 
 class Search extends React.Component {
   state = {
@@ -14,9 +14,8 @@ class Search extends React.Component {
   fetchbooks = e => {
     e.preventDefault();
 
-    Axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${this.state.query}`
-    )
+    axios
+      .get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.query}`)
       .then(res => {
         this.setState({
           books: res.data.items
@@ -28,7 +27,7 @@ class Search extends React.Component {
   };
 
   saveBook = book => {
-    Axios.post("/api/books", {
+    axios.post("/api/books", {
       title: book.volumeInfo.title,
       authors: book.volumeInfo.authors,
       description: book.volumeInfo.description,
@@ -51,16 +50,16 @@ class Search extends React.Component {
         {this.state.books.map(result => {
           return (
             <div key={result.id}>
-              <h2>{result.volumInfo.title}</h2>
+              <h2>{result.volumeInfo.title}</h2>
               {result.volumeInfo.authors &&
-                result.volumInfo.authors.map(author => {
+                result.volumeInfo.authors.map(author => {
                   return <p key={author}>{author}</p>;
                 })}
               <p>{result.volumeInfo.description}</p>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={result.volumInfo.previewLink}
+                href={result.volumeInfo.previewLink}
               >
                 View
               </a>
