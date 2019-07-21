@@ -1,10 +1,9 @@
 import React, { Component} from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-// import Navbar from "./components/Navbar/Navbar";
-// import TitleCard from "./components/TitleCard/TitleCard";
-import Searchbar from "./components/Searchbar/Searchbar";
-// import Searchresultcard from "./components/Searchresultcard/Searchresultcard";
-import Savedresultcard from "./components/Savedresultcard/Savedresultcard";
+
+import Searchresult from "./components/Searchresult/Searchresult";
+
+import Savedresult from "./components/Savedresult/Savedresult";
 
 
 class App extends Component {
@@ -26,9 +25,9 @@ class App extends Component {
           <h1>Google Books Search with React</h1>
           <p> Search and Save Books of Interest</p>
           </div>
-            <Route exact path="/" component={Searchbar} />
-            <Route exact path="/search" component={Searchbar} />
-            <Route exact path="/saved" component={Savedresultcard} />
+            <Route exact path="/" component={Searchresult} />
+            <Route exact path="/search" component={Searchresult} />
+            <Route exact path="/books" component={Savedresult} />
       </Router>
    );
   }

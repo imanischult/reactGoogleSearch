@@ -31,7 +31,7 @@ class Search extends React.Component {
       title: book.volumeInfo.title,
       authors: book.volumeInfo.authors,
       description: book.volumeInfo.description,
-      image: book.volumInfo.imageLinks.thumbnail,
+      image: book.volumeInfo.imageLinks.thumbnail,
       link: book.volumeInfo.previewLink
     });
   };
