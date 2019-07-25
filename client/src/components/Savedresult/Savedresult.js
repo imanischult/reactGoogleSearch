@@ -6,7 +6,8 @@ class Saved extends Component {
     saved: []
   };
 
-  componenentDidMount() {
+  componentDidMount() {
+    console.log("it is mounted");
     this.fetchSaved();
   }
 

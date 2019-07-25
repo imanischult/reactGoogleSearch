@@ -1,8 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const path = require("path");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3006;
 
 const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost/googlebooks";
@@ -24,6 +25,7 @@ const app = express();
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -36,13 +38,19 @@ app.get("/api/books", function(req, res) {
       res.sendStatus(500);
       return;
     }
+    console.log("books are", books);
     return res.json(books);
   });
 });
 
-app.post("/api/books", function(req, res) {
-  Book.create(req.body);
-  return res.sendStatus(201);
+app.post("/api/books", async function(req, res) {
+  try {
+    const book = await Book.create(req.body);
+    console.log(book);
+    return res.status(201).json(book);
+  } catch (err) {
+    res.sendStatus(500);
+  }
 });
 
 app.delete("/api/books/:id", function(req, res) {
